@@ -6,8 +6,8 @@ import { BACKEND_URL } from "../config"
 
 
 export const CreatePost = () => {
-    const [title, setTitle] = useState("Goli Beta Masti Nahi")
-    const [description, setDescription] = useState("I know you will do this")
+    const [title, setTitle] = useState("Untitled")
+    const [description, setDescription] = useState("Sample Description")
     const navigate = useNavigate()
     return (
         <div className="absolute inset-0 h-screen max-w-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">

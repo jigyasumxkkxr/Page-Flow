@@ -6,6 +6,7 @@ import { Landing } from "./pages/Landing"
 import { Blogs } from "./pages/Blogs"
 import { Publish } from "./pages/Publish"
 import { MyBlog } from "./pages/MyBlogs"
+import { EditPost } from "./pages/Edit"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/signup" element = {<Signup />} />
           <Route path="/signin" element = {<Signin />} />
           <Route path="/blog/:id" element = {<Blog />} />
+          <Route path="blog/edit/:id" element = {<EditPost />} />
           <Route path="/blogs" element = {<Blogs />} />
           <Route path="/create" element = {<Publish />} />
           <Route path="/myblogs" element = {<MyBlog />} />
