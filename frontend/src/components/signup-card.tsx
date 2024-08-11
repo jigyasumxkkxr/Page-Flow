@@ -19,7 +19,7 @@ export const SignupCard = () => {
             const response = await axios.post(`${BACKEND_URL}/api/v1/user/signup`, postInputs)
             const jwt = response.data.jwt
             const name = response.data.name
-            localStorage.setItem("name" , name)
+            localStorage.setItem("firstName" , name)
             localStorage.setItem("token" , `Bearer `+jwt)
             navigate("/blogs")
         }catch (e) {

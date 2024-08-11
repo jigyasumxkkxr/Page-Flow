@@ -22,7 +22,7 @@ export const SigninCard = () => {
             const jwt = response.data?.jwt
             localStorage.setItem("token" , `Bearer `+jwt)
             const name = response.data.name
-            localStorage.setItem("name" , name)
+            localStorage.setItem("firstName" , name)
             navigate("/blogs")
         }catch (e){
             if(e instanceof AxiosError) {

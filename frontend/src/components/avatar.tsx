@@ -1,5 +1,5 @@
-import { Dropdown, DropdownItem  } from 'flowbite-react';
 import { useNavigate } from 'react-router-dom';
+import {  Dropdown,  DropdownTrigger,  DropdownMenu ,  DropdownItem} from "@nextui-org/dropdown";
 
 export const MyDropdown = () => {
     const navigate = useNavigate();
@@ -16,24 +16,12 @@ export const MyDropdown = () => {
       console.log('My Posts clicked');
       navigate("/myblogs")
     };
-  
-    const handleDropdownItemClick = (itemName: string) => {
-      console.log(`${itemName} clicked`);
-      // Handle dropdown item clicks here
-    };
+
   
     return (
-      <Dropdown
-        label=""
-        dismissOnClick={false}
-        renderTrigger={() => (
-          <button
-            id="dropdownUserAvatarButton"
-            data-dropdown-toggle="dropdownAvatar"
-            className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-2 focus:ring-green-100 dark:focus:ring-green-300"
-            type="button"
-          >
-            <div className="relative w-8 h-8 overflow-hidden bg-slate-200 rounded-full">
+      <Dropdown>
+      <DropdownTrigger>
+      <div className="relative w-8 h-8 overflow-hidden bg-slate-200 rounded-full cursor-pointer">
               <svg
                 className="absolute w-10 h-10 text-gray-400 -left-1"
                 fill="currentColor"
@@ -47,15 +35,14 @@ export const MyDropdown = () => {
                 ></path>
               </svg>
             </div>
-          </button>
-        )}
-      >
-        <DropdownItem   onClick={() => handleDropdownItemClick(`Signed in as ${localStorage.getItem("name")}`)}>
-          {`Signed in as ${localStorage.getItem("name")}`}
-        </DropdownItem >
-        <Dropdown.Item onClick={handleMyPostsClick}>My Posts</Dropdown.Item>
-        <Dropdown.Item onClick={handleSignOutClick}>Sign out</Dropdown.Item>
-      </Dropdown>
+      </DropdownTrigger>
+      <DropdownMenu aria-label="Static Actions" className='backdrop-blur-xs'>
+        <DropdownItem key="new" className='cursor-default'>{`Signed as ${localStorage.getItem("firstName")}`}</DropdownItem>
+        <DropdownItem key="copy" onClick={handleMyPostsClick} className='cursor-pointer'>My Posts</DropdownItem>
+        <DropdownItem key="edit" className='cursor-pointer' onClick={handleSignOutClick}>Log Out</DropdownItem>
+        
+      </DropdownMenu>
+    </Dropdown>
     );
   };
 
