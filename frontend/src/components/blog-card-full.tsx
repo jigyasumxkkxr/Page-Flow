@@ -22,7 +22,7 @@ export const BlogCardFull = ({
                                 {title}
                             </div>
                             <div className="text-slate-500 pt-2">
-                                Post on {publishedDate}
+                                {publishedDate}
                             </div>
                                 <div className="pt-4">
                             {description}
