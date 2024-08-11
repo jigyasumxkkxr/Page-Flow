@@ -1,0 +1,13 @@
+name = "backend"
+compatibility_date = "2024-08-08"
+
+[vars]
+DATABASE_URL="postgresql://neondb_owner:q2Ks4xTAjStp@ep-sparkling-grass-a5or93mb-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require"
+DIRECT_URL="postgresql://neondb_owner:q2Ks4xTAjStp@ep-sparkling-grass-a5or93mb.us-east-2.aws.neon.tech/neondb?sslmode=require"
+JWT_SECRET = "i_know_you_dont_know_me"
+
+[env.production]
+vars = { DATABASE_URL = "postgresql://neondb_owner:q2Ks4xTAjStp@ep-sparkling-grass-a5or93mb-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require" }
+
+[env.dev]
+vars = { DATABASE_URL = "postgresql://neondb_owner:q2Ks4xTAjStp@ep-sparkling-grass-a5or93mb.us-east-2.aws.neon.tech/neondb?sslmode=require" }
