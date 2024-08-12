@@ -22,8 +22,8 @@ export const LandingSubHero = () => {
                 <Link to = "https://www.linkedin.com/in/jigyasumakkxr/" >
                 <button className="bg-blue-100 px-5 rounded-md h-8 font-semibold text-blue-600 hover:bg-blue-200">LinkedIn</button>
                 </Link>
-                <Link to = "https://github.com/jigyasumxkkxr" >
-                <button className="bg-gray-100 px-5 rounded-md h-8 font-semibold text-gray-600 hover:bg-gray-200">Github</button>
+                <Link to = "https://github.com/jigyasumxkkxr/Page-Flow" >
+                <button className="bg-gray-100 px-5 rounded-md h-8 font-semibold text-gray-600 hover:bg-gray-200">Star Repo on Github</button>
                 </Link>
             </div>
         </div>
