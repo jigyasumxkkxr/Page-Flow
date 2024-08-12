@@ -124,6 +124,7 @@ blogRoute.get("/bulk", async (c) => {
                 id: true,
                 title: true,
                 content: true,
+                
                 author:{
                     select: {
                        name: true 
@@ -155,6 +156,7 @@ blogRoute.get("/my", async (c) => {
                 id: true,
                 title: true,
                 content: true,
+                
                 author:{
                     select: {
                        name: true 
@@ -171,6 +173,8 @@ blogRoute.get("/my", async (c) => {
     }
 })
 
+
+
 blogRoute.get("/:id", async (c) => {
     const id = c.req.param("id")
     const connectionString = c.env.DATABASE_URL
@@ -186,9 +190,17 @@ blogRoute.get("/:id", async (c) => {
                 id: true,
                 title: true,
                 content: true,
+                
                 author:{
                     select: {
                         name: true
+                    }
+                },
+                comments:{
+                    select:{
+                        id: true,
+                        content: true,
+                        createdAt: true
                     }
                 }
             }
@@ -202,3 +214,47 @@ blogRoute.get("/:id", async (c) => {
     }
 })
 
+blogRoute.post("/comment/:id", async (c) => {
+    const id = c.req.param("id")
+    const connectionString = c.env.DATABASE_URL
+    const pool = new Pool({connectionString})
+    const adapter = new PrismaNeon(pool)
+    const prisma = new PrismaClient({adapter})
+    try {
+        const body = await c.req.json()
+        const comment = await prisma.comment.create({
+            data: {
+                content: body.content,
+                post: {
+                    connect: { id: id } // Connect to the post by its ID
+                }
+            }
+        })
+        return c.json(comment)
+    }catch(err){
+        c.status(500)
+        return c.json({ error: "Internal Server Error" })
+    }
+})
+
+blogRoute.get("/comment/:id", async (c) => {
+    const id = c.req.param("id")
+    const connectionString = c.env.DATABASE_URL
+    const pool = new Pool({connectionString})
+    const adapter = new PrismaNeon(pool)
+    const prisma = new PrismaClient({adapter})
+    try {
+        const comment = await prisma.comment.findMany({
+            where: {
+                postId:id
+            },
+            orderBy: {
+                createdAt: 'desc'
+            }
+        })
+        return c.json(comment)
+    }catch(err){
+        c.status(500)
+        return c.json({ error: "Internal Server Error" })
+    }
+})

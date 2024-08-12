@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { Nav } from "../components/blog-nav"
 import { useBlog } from "../hooks/blog"
 import { BlogCardFull } from "../components/blog-card-full"
+import { Comments } from "../components/comments"
 
 
 
@@ -12,6 +13,7 @@ export const Blog = () => {
     const {loading, blog} = useBlog({
         id: id || ""
     })
+
     if (loading || !blog) {
         return (
             <div className="flex justify-center items-center h-screen absolute inset-0 h-screen w-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
@@ -30,6 +32,7 @@ export const Blog = () => {
                 <div className="w-4/5 m-auto mb-10 p-4 rounded-t-xl h-fit mt-20 flex flex-col justify-between gap-3 backdrop-blur-xs shadow-md">
                     <BlogCardFull id={blog.id} title={blog.title} description = {blog.content} publishedDate="Posted on a day in 2024" author= {blog.author?.name ?? 'Anonymous'}  />
                 </div>
+                <Comments initialcomments={blog.comments} id={blog.id} />
             </div>
         )
     }

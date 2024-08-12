@@ -8,6 +8,9 @@ export default {
     extend: {
       backdropBlur: {
         xs: '1px',
+      },
+      padding: {
+        '60px': '60px',
       }
     },
   },

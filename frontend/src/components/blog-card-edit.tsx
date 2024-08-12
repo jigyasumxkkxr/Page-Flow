@@ -65,7 +65,7 @@ export const BlogCardEdit = ({
                         {`${Math.ceil(description.length / 400)} minute(s) read`}
                     </span>
                     <Link to={`/blog/edit/${id}`} >
-                        <button className="bg-green-300 text-green-900 rounded-md text-sm font-semibold px-5 py-1 shadow-md hover:bg-green-200">
+                        <button className="bg-gray-300 text-gray-900 rounded-md text-sm font-semibold px-5 py-1 shadow-md hover:bg-gray-200">
                             Edit
                         </button>
                     </Link>

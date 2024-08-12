@@ -11,9 +11,23 @@ interface blogs {
     }
 }
 
+interface blog {
+    id: string,
+    title: string,
+    content: string,
+    author: {
+        name: string
+    },
+    comments: {
+        id: string,
+        content: string,
+        createdAt: Date
+    }[]
+}
+
 export const useBlog = ({id}: {id:string}) => {
     const [loading, setLoading] = useState(true)
-    const [blog, setBlog] = useState<blogs>()
+    const [blog, setBlog] = useState<blog>()
 
     useEffect(() => {
         const token = localStorage.getItem('token')
