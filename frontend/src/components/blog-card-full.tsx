@@ -1,19 +1,20 @@
-
+import moment from "moment-timezone"
 
 interface BlogProps {
     id: string,
     title: string,
     description: string,
-    publishedDate: string,
+    createdAt: Date,
     author: string
 }
 
 export const BlogCardFull = ({
     title,
     description,
-    publishedDate,
+    createdAt,
     author
 } : BlogProps) => {
+    const createdAtIndiaTime = moment(createdAt).tz('Asia/Kolkata').format('MMMM D, YYYY [at] hh:mm A')
     return (
         <div className="flex w-full pb-4">
             <div className="flex w-full items-center">
@@ -22,10 +23,8 @@ export const BlogCardFull = ({
                         <div className="text-5xl font-extrabold">
                             {title}
                         </div>
-                        <div className="text-slate-500 pt-2">
-                            {publishedDate}
-                        </div>
-                                <div className="pt-4">
+                        <p className="font-md text-xs text-slate-600 pt-2">{createdAtIndiaTime.toLocaleString()}</p>
+                            <div className="pt-4">
                             {description}
                             </div>
                         </div>

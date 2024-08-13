@@ -7,8 +7,10 @@ interface blogs {
     title: string,
     content: string,
     author: {
+        id: string,
         name: string
-    }
+    },
+    createdAt: Date
 }
 
 interface blog {
@@ -20,9 +22,11 @@ interface blog {
     },
     comments: {
         id: string,
+        name: string,
         content: string,
         createdAt: Date
-    }[]
+    }[],
+    createdAt: Date
 }
 
 export const useBlog = ({id}: {id:string}) => {

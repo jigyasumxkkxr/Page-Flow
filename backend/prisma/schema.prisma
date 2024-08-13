@@ -27,7 +27,7 @@ model Post {
   id        String   @id @default(uuid())
   title     String
   content   String
-  published Boolean  @default(false)
+  createdAt DateTime @default(now())
   author    User     @relation(fields: [authorId], references: [id])
   authorId  String
   comments  Comment[] 
@@ -35,6 +35,7 @@ model Post {
 
 model Comment {
   id        String   @id @default(uuid())
+  name      String   @default("Anonymous")
   content   String
   createdAt DateTime @default(now())
   post      Post     @relation(fields: [postId], references: [id])

@@ -124,10 +124,11 @@ blogRoute.get("/bulk", async (c) => {
                 id: true,
                 title: true,
                 content: true,
-                
+                createdAt: true,
                 author:{
                     select: {
-                       name: true 
+                        id: true,
+                        name: true 
                     }
                 }
             }
@@ -156,10 +157,11 @@ blogRoute.get("/my", async (c) => {
                 id: true,
                 title: true,
                 content: true,
-                
+                createdAt: true,
                 author:{
                     select: {
-                       name: true 
+                        id: true,
+                        name: true 
                     }
                 }
             }
@@ -172,8 +174,6 @@ blogRoute.get("/my", async (c) => {
         })
     }
 })
-
-
 
 blogRoute.get("/:id", async (c) => {
     const id = c.req.param("id")
@@ -190,7 +190,7 @@ blogRoute.get("/:id", async (c) => {
                 id: true,
                 title: true,
                 content: true,
-                
+                createdAt: true,
                 author:{
                     select: {
                         name: true
@@ -199,8 +199,12 @@ blogRoute.get("/:id", async (c) => {
                 comments:{
                     select:{
                         id: true,
+                        name: true,
                         content: true,
                         createdAt: true
+                    },
+                    orderBy: {
+                        createdAt: 'desc'
                     }
                 }
             }
@@ -224,6 +228,7 @@ blogRoute.post("/comment/:id", async (c) => {
         const body = await c.req.json()
         const comment = await prisma.comment.create({
             data: {
+                name: body.name,
                 content: body.content,
                 post: {
                     connect: { id: id } // Connect to the post by its ID
@@ -237,7 +242,7 @@ blogRoute.post("/comment/:id", async (c) => {
     }
 })
 
-blogRoute.get("/comment/:id", async (c) => {
+blogRoute.get("/comment/new/:id", async (c) => {
     const id = c.req.param("id")
     const connectionString = c.env.DATABASE_URL
     const pool = new Pool({connectionString})
@@ -250,6 +255,28 @@ blogRoute.get("/comment/:id", async (c) => {
             },
             orderBy: {
                 createdAt: 'desc'
+            }
+        })
+        return c.json(comment)
+    }catch(err){
+        c.status(500)
+        return c.json({ error: "Internal Server Error" })
+    }
+})
+
+blogRoute.get("/comment/old/:id", async (c) => {
+    const id = c.req.param("id")
+    const connectionString = c.env.DATABASE_URL
+    const pool = new Pool({connectionString})
+    const adapter = new PrismaNeon(pool)
+    const prisma = new PrismaClient({adapter})
+    try {
+        const comment = await prisma.comment.findMany({
+            where: {
+                postId:id
+            },
+            orderBy: {
+                createdAt: 'asc'
             }
         })
         return c.json(comment)

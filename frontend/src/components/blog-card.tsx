@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom"
 import bagdee from "../assets/Badge.svg"
 import { useEffect, useState } from "react"
+import moment from "moment-timezone"
 
 interface BlogProps {
     id: string,
     title: string,
     description: string,
-    publishedDate: string,
-    author: string
+    createdAt: Date,
+    author: string,
+    authorId: string
 }
 
 
@@ -15,18 +17,19 @@ export const BlogCard = ({
     id,
     title,
     description,
-    publishedDate,
-    author
+    createdAt,
+    author,
+    authorId
 } : BlogProps) => {
     const [badge, setBadge] = useState(false)
     useEffect(() => {
-        if (author === "Jigyasu Makkar") {
+        if (authorId === "b2387238-6e73-405d-8a81-0362fe4776b3") {
             setBadge(true);
         } else {
             setBadge(false);
         }
     }, [author])
-
+    const createdAtIndiaTime = moment(createdAt).tz('Asia/Kolkata').format('MMMM D, YYYY [at] hh:mm A')
     return (
         <Link to = {`/blog/${id}`} >
             <div className="flex flex-col gap-3 w-full pb-4 border-b items-start justify-start">
@@ -48,9 +51,7 @@ export const BlogCard = ({
                             <p className="text-green-500">Owner</p>
                         </div>
                     )}
-                    <div>
-                        <p className="text-slate-400">{publishedDate}</p>
-                    </div>
+                    <p className="font-md text-xs text-slate-600 pt-0.5">{createdAtIndiaTime.toLocaleString()}</p>
                 </div>
                 <div>
                     <p className="font-bold text-3xl">{title}</p>
