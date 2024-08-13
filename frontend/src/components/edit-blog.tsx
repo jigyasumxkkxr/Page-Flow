@@ -57,7 +57,7 @@ export const Edit = () => {
                     });
                     navigate(`/blog/${id}`)
                 }} type="submit" className="w-fit  inline-flex justify-end px-5 py-2.5 text-sm font-medium text-center text-white bg-green-700 rounded-lg focus:ring-4 focus:ring-green-200 dark:focus:ring-green-900 hover:bg-green-800">
-                    Publish post
+                    Edit post
                 </button>
                 </div>
             </div>

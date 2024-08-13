@@ -41,16 +41,17 @@ At PageFlow, we’re redefining the blogging experience with a modern, streamlin
 ![9fc935781c43b01e1a980f485c9f227e.png](https://imgtr.ee/images/2024/08/12/9fc935781c43b01e1a980f485c9f227e.png)
 
 ### Blogs Page
-![22f1651d7c47370569f2b50145b7feb7.png](https://imgtr.ee/images/2024/08/12/22f1651d7c47370569f2b50145b7feb7.png)
+![49a39676c08d680f509d1fb7e1e35f69.png](https://imgtr.ee/images/2024/08/13/49a39676c08d680f509d1fb7e1e35f69.png)
 
-### Magnified View Page
-![8fb6d8d042e2f3e4177c0379179da9d5.png](https://imgtr.ee/images/2024/08/12/8fb6d8d042e2f3e4177c0379179da9d5.png)
+### Full Screen Blog Page
+![48739798ee5b14e0ac0dbc149764a825.png](https://imgtr.ee/images/2024/08/13/48739798ee5b14e0ac0dbc149764a825.png)
 
 ### Create New Post
-![5670575fb453933b7186c51887873e36.png](https://imgtr.ee/images/2024/08/12/5670575fb453933b7186c51887873e36.png)
+![e340b4fedddefb0438bd76323ed71f9f.png](https://imgtr.ee/images/2024/08/13/e340b4fedddefb0438bd76323ed71f9f.png)
 
 ### Edit Post Page
-![e063001db4c63c247c4b335113a152c5.png](https://imgtr.ee/images/2024/08/12/e063001db4c63c247c4b335113a152c5.png)
+![image](https://github.com/user-attachments/assets/343a2fe4-5ffa-4042-888d-ad9f329a0f8b)
+
 
 
 

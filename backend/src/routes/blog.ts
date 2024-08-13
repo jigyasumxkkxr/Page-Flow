@@ -131,6 +131,9 @@ blogRoute.get("/bulk", async (c) => {
                         name: true 
                     }
                 }
+            },
+            orderBy: {
+                createdAt: 'desc'
             }
         })
         return c.json({posts})
