@@ -42,15 +42,14 @@ export const Comment = ({
                 </div>
             </div>
             <div className="w-4/5">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
                 <p className="font-semibold text-md">{name}</p>
                 {bagde && (
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center ">
                             <div className="h-4 w-4 ">
                             <img src={bagdee} alt="Badge" />
                             
                             </div>
-                            <p className="text-green-500">Owner</p>
                         </div>
                     )}
                 <p className="font-md text-xs text-slate-600 pt-0.5">{createdAtIndiaTime.toLocaleString()}</p>

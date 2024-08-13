@@ -23,7 +23,7 @@ export const BlogCardFull = ({
                         <div className="text-5xl font-extrabold">
                             {title}
                         </div>
-                        <p className="font-md text-xs text-slate-600 pt-2">{createdAtIndiaTime.toLocaleString()}</p>
+                        <p className="font-md text-xs text-slate-600 pt-3">{createdAtIndiaTime.toLocaleString()}</p>
                             <div className="pt-4">
                             {description}
                             </div>

@@ -23,7 +23,7 @@ export const BlogCard = ({
 } : BlogProps) => {
     const [badge, setBadge] = useState(false)
     useEffect(() => {
-        if (authorId === "b2387238-6e73-405d-8a81-0362fe4776b3") {
+        if (authorId === "9d0fe486-b01d-4c53-a684-bc06dea23aae") {
             setBadge(true);
         } else {
             setBadge(false);
@@ -43,12 +43,11 @@ export const BlogCard = ({
                         </div>
                     </div>
                     {badge && (
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center">
                             <div className="h-4 w-4 ">
                             <img src={bagdee} alt="Badge" />
                             
                             </div>
-                            <p className="text-green-500">Owner</p>
                         </div>
                     )}
                     <p className="font-md text-xs text-slate-600 pt-0.5">{createdAtIndiaTime.toLocaleString()}</p>
