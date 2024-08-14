@@ -43,7 +43,7 @@ export const Comment = ({
             </div>
             <div className="w-4/5">
                 <div className="flex items-center gap-1">
-                <p className="font-semibold text-md">{name}</p>
+                <p className="font-semibold text-sm sm:text-md">{name}</p>
                 {bagde && (
                         <div className="flex items-center ">
                             <div className="h-4 w-4 ">

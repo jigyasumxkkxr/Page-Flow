@@ -29,7 +29,7 @@ export const Edit = () => {
     return (
         <div className="absolute inset-0 min-h-screen max-h-fit max-w-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
             <NavPost />
-            <div className="flex justify-center w-4/5 m-auto mt-24 py-8 backdrop-blur-xs shadow-md"> 
+            <div className="flex justify-center w-full px-3 sm:w-4/5 m-auto mt-24 py-8 backdrop-blur-xs shadow-md"> 
             <div className="max-w-screen-lg w-full flex flex-col gap-5">
                 <div className="flex flex-col gap-2">
                 <p className="text-slate-600 font-semibold">Title</p>
