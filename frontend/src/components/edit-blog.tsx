@@ -15,6 +15,18 @@ export const Edit = () => {
     const {loading, blog} = useBlog({
         id: id || ""
     })
+    const handleEdit = async () => {
+        await axios.put(`${BACKEND_URL}/api/v1/blog`, {
+             id,
+             title,
+             content: description
+         }, {
+             headers: {
+                 Authorization: localStorage.getItem("token")
+             }
+         });
+         navigate(`/blog/${id}`)
+     }
     if (loading || !blog) {
         return (
             <div className="flex justify-center items-center h-screen absolute inset-0 h-screen w-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
@@ -46,19 +58,16 @@ export const Edit = () => {
                 }} className="h-48 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder={blog.content}  />
                 </div>
                 <div className="flex justify-end">
-                <button onClick={async () => {
-                   await axios.put(`${BACKEND_URL}/api/v1/blog`, {
-                        id,
-                        title,
-                        content: description
-                    }, {
-                        headers: {
-                            Authorization: localStorage.getItem("token")
-                        }
-                    });
-                    navigate(`/blog/${id}`)
-                    toast.success("Successfully Edited Post!")
-                }} type="submit" className="w-fit  inline-flex justify-end px-5 py-2.5 text-sm font-medium text-center text-white bg-green-700 rounded-lg focus:ring-4 focus:ring-green-200 dark:focus:ring-green-900 hover:bg-green-800">
+                <button onClick={() => {
+                toast.promise(
+                    handleEdit(),
+                    {
+                        loading: 'Editing...',
+                        success: 'Successfully Edited!',
+                        error: 'Failed to edit post. Please try again.'
+                    }
+                );
+            }} type="submit" className="w-fit  inline-flex justify-end px-5 py-2.5 text-sm font-medium text-center text-white bg-green-700 rounded-lg focus:ring-4 focus:ring-green-200 dark:focus:ring-green-900 hover:bg-green-800">
                     Edit post
                 </button>
                 </div>

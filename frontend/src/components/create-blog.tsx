@@ -10,6 +10,17 @@ export const CreatePost = () => {
     const [title, setTitle] = useState("Untitled")
     const [description, setDescription] = useState("Sample Description")
     const navigate = useNavigate()
+    const handlePost = async () => {
+        const response = await axios.post(`${BACKEND_URL}/api/v1/blog`, {
+            title,
+            content: description
+        }, {
+            headers: {
+                Authorization: localStorage.getItem("token")
+            }
+        });
+        navigate(`/blog/${response.data.id}`)
+    }
     return (
         <div className="absolute inset-0 min-h-screen max-h-fit max-w-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
             <NavPost />
@@ -29,18 +40,16 @@ export const CreatePost = () => {
                 }} className="h-48 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Content"  />
                 </div>
                 <div className="flex justify-end">
-                <button onClick={async () => {
-                    const response = await axios.post(`${BACKEND_URL}/api/v1/blog`, {
-                        title,
-                        content: description
-                    }, {
-                        headers: {
-                            Authorization: localStorage.getItem("token")
-                        }
-                    });
-                    navigate(`/blog/${response.data.id}`)
-                    toast.success("Successfully Posted!")
-                }} type="submit" className="w-fit  inline-flex justify-end px-5 py-2.5 text-sm font-medium text-center text-white bg-green-700 rounded-lg focus:ring-4 focus:ring-green-200 dark:focus:ring-green-900 hover:bg-green-800">
+                <button onClick={() => {
+                toast.promise(
+                    handlePost(),
+                    {
+                        loading: 'Posting...',
+                        success: 'Successfully Posted!',
+                        error: 'Failed to post. Please try again.'
+                    }
+                );
+            }} type="submit" className="w-fit  inline-flex justify-end px-5 py-2.5 text-sm font-medium text-center text-white bg-green-700 rounded-lg focus:ring-4 focus:ring-green-200 dark:focus:ring-green-900 hover:bg-green-800">
                     Publish post
                 </button>
                 </div>
