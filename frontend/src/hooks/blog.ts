@@ -51,7 +51,7 @@ export const useBlog = ({id}: {id:string}) => {
     }
 }
 
-export const useBlogs = (reference : string) => {
+export const useBlogs = (reference: string, refreshKey?: string) => {
     const [loading, setLoading] = useState(true)
     const [blogs, setBlogs] = useState<blogs[]>([])
 
@@ -65,7 +65,7 @@ export const useBlogs = (reference : string) => {
             setBlogs(response.data.posts)
             setLoading(false)
         })
-    },[])
+    },[refreshKey])
 
     return {
         loading,

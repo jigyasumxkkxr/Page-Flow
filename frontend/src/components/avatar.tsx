@@ -1,9 +1,11 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {  Dropdown,  DropdownTrigger,  DropdownMenu ,  DropdownItem} from "@nextui-org/dropdown";
 import toast from 'react-hot-toast';
+import { useState } from 'react';
 
 export const MyDropdown = () => {
     const navigate = useNavigate();
+    const [refreshKey, setRefreshKey] = useState(Date.now().toString())
   
     const handleSignOutClick = () => {
       console.log('Sign out clicked');
@@ -18,12 +20,10 @@ export const MyDropdown = () => {
       console.log('My Posts clicked');
       navigate("/myblogs")
     };
-    const location = useLocation()
     const handleRefreshClick = () => {
-      navigate("/blogs")
-      if(location.pathname === "/blogs"){
-        toast.success("Refreshed")
-      }
+      setRefreshKey(Date.now().toString());
+        navigate(`/blogs?refresh=${refreshKey}`);
+        toast.success("Refreshed");
     }
 
   

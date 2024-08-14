@@ -1,11 +1,15 @@
+import { useLocation } from "react-router-dom"
 import { BlogCard } from "../components/blog-card"
 import { Nav } from "../components/blog-nav"
 import {useBlogs } from "../hooks/blog"
 
 
 export const Blogs = () => {
-    const {loading, blogs} = useBlogs("bulk")
     
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const refresh = queryParams.get('refresh') || undefined;
+    const {loading, blogs} = useBlogs("bulk",refresh)
     if (loading) {
         return (
             <div className="flex justify-center items-center h-screen absolute inset-0 h-screen w-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
