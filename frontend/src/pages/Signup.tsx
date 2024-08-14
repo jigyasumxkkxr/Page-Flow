@@ -26,7 +26,7 @@ export const Signup = () => {
     else {
         return (
             <div className="absolute inset-0 min-h-screen max-h-fit w-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] flex">
-                <div className="hidden sm:block w-1/2 bg-slate-100 flex flex-col justify-center items-center shadow-xl shadow-slate-300">
+                <div className="hidden sm:flex w-1/2 bg-slate-100  flex-col justify-center items-center shadow-xl shadow-slate-300">
                     <div className="h-2/5">
                         <img src={signupimg} alt="" className="h-full"/>
                     </div>

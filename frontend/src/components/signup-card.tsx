@@ -35,7 +35,7 @@ export const SignupCard = () => {
     }
 
     return (
-        <div className="bg-slate-50 p-5 rounded-md shadow-md shadow-slate-300 w-4/5">
+        <div className="bg-slate-50 p-5 rounded-md shadow-md shadow-slate-300 w-4/5 sm:w-1/2">
             <div className="text-center">
                 <p className="text-2xl font-bold text-slate-900">Sign Up</p>
                 <p className="text-lg font-semibold text-slate-700">Create an account</p>
