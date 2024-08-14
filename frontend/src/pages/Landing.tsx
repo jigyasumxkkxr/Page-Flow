@@ -26,7 +26,7 @@ export const Landing = () => {
 
     else {
         return (
-            <div className="absolute inset-0 h-screen w-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] flex flex-col justify-between">
+            <div className="absolute inset-0 min-h-screen max-h-fit w-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] flex flex-col justify-between">
                 <NavBar />
                 <div className="w-full flex justify-center">
                     <HeroLanding />

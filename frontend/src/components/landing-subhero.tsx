@@ -15,7 +15,7 @@ export const LandingSubHero = () => {
                 </div>
                 <Button label="Signup / Signin" onClick={SignUpHandeler} />
             </div>
-            <div className="flex gap-4 pt-2 flex-row-reverse">
+            <div className="flex gap-4 pt-2 flex-col-reverse items-center sm:flex-row-reverse">
                 <Link to = "https://x.com/Jigyasu_20">
                 <button className="bg-sky-100 px-5 rounded-md h-8 font-semibold text-sky-400 hover:bg-sky-200">Twitter</button>
                 </Link>
