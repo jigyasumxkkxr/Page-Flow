@@ -27,11 +27,11 @@ export const Signin = () => {
     }
     else {
         return (
-            <div className="absolute inset-0 h-screen w-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] flex">
-                <div className="w-1/2 flex justify-center items-center">
+            <div className="absolute inset-0 min-h-screen max-h-fit w-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] flex">
+                <div className="w-screen sm:w-1/2 flex justify-center items-center">
                     <SigninCard />
                 </div>
-                <div className="w-1/2 bg-slate-100 flex flex-col justify-center items-center shadow-xl shadow-slate-300">
+                <div className="hidden sm:block w-1/2 bg-slate-100 flex flex-col justify-center items-center shadow-xl shadow-slate-300">
                     <div className="h-1/3">
                         <img src= {SigninImg} alt="" className="h-full" />
                     </div>
