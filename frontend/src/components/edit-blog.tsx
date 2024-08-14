@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { BACKEND_URL } from "../config"
 import { NavPost } from "./create-nav"
 import { useBlog } from "../hooks/blog"
+import toast from "react-hot-toast"
 
 
 export const Edit = () => {
@@ -56,6 +57,7 @@ export const Edit = () => {
                         }
                     });
                     navigate(`/blog/${id}`)
+                    toast.success("Successfully Edited Post!")
                 }} type="submit" className="w-fit  inline-flex justify-end px-5 py-2.5 text-sm font-medium text-center text-white bg-green-700 rounded-lg focus:ring-4 focus:ring-green-200 dark:focus:ring-green-900 hover:bg-green-800">
                     Edit post
                 </button>

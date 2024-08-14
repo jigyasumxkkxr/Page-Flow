@@ -2,6 +2,7 @@ import { SignupCard } from "../components/signup-card"
 import signupimg from "../assets/Croods Peaceful Place.svg"
 import { useEffect, useState } from "react"
 
+
 export const Signup = () => {
     const [loading, setLoading] = useState(true)
     useEffect(() => {
@@ -11,6 +12,7 @@ export const Signup = () => {
 
         return () => clearTimeout(timer);
     }, [])
+    
 
     if (loading) {
         return (

@@ -167,6 +167,9 @@ blogRoute.get("/my", async (c) => {
                         name: true 
                     }
                 }
+            },
+            orderBy: {
+                createdAt: 'desc'
             }
         })
         return c.json({posts})

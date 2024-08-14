@@ -3,6 +3,7 @@ import { NavPost } from "./create-nav"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import { BACKEND_URL } from "../config"
+import toast from "react-hot-toast"
 
 
 export const CreatePost = () => {
@@ -38,6 +39,7 @@ export const CreatePost = () => {
                         }
                     });
                     navigate(`/blog/${response.data.id}`)
+                    toast.success("Successfully Posted!")
                 }} type="submit" className="w-fit  inline-flex justify-end px-5 py-2.5 text-sm font-medium text-center text-white bg-green-700 rounded-lg focus:ring-4 focus:ring-green-200 dark:focus:ring-green-900 hover:bg-green-800">
                     Publish post
                 </button>

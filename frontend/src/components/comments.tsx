@@ -4,6 +4,7 @@ import axios from "axios"
 import { BACKEND_URL } from "../config"
 import { SkeletonLoader } from "./skeleton"
 import {  Dropdown,  DropdownTrigger,  DropdownMenu ,  DropdownItem} from "@nextui-org/dropdown";
+import toast from "react-hot-toast"
 
 
 export const Comments = ({ initialcomments , id }: {
@@ -26,7 +27,9 @@ export const Comments = ({ initialcomments , id }: {
                 headers : {
                     Authorization : token
                 }
+                
             })
+            toast.success("Comment added!")
             setComments(response.data)
         }catch (error) {
             console.error("Error fetching comments:", error);

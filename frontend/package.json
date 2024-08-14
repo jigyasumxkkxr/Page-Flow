@@ -21,6 +21,7 @@
     "primereact": "^10.8.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.4.1",
     "react-loader-spinner": "^6.1.6",
     "react-router-dom": "^6.26.0",
     "rsuite": "^5.69.0"

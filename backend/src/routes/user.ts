@@ -21,7 +21,7 @@ userRoute.post('/signup', async (c) => {
     if (!success) {
         c.status(411);
         return c.json({
-            message: "Inputs not correct"
+            message: "Invalid email or password"
         })
     }
     const connectionString = c.env.DATABASE_URL
@@ -29,6 +29,17 @@ userRoute.post('/signup', async (c) => {
     const adapter = new PrismaNeon(pool)
     const prisma = new PrismaClient({adapter})
     try {
+        const existingUser = await prisma.user.findUnique({
+            where: {
+                email: body.email
+            }
+        })
+        if (existingUser) {
+            c.status(409); // Conflict status code
+            return c.json({
+                error: "An account with this email already exists"
+            });
+        }
           const user = await prisma.user.create({
               data: {
                   email: body.email,
@@ -40,8 +51,8 @@ userRoute.post('/signup', async (c) => {
       const name  = body.name
         return c.json({ jwt, name });
       } catch(e) {
-          c.status(403)
-      return c.json({ error: "error while signing up" })
+          c.status(500)
+        return c.json({ error: "Internal Server Error" })
       }
   })
   
@@ -51,7 +62,7 @@ userRoute.post('/signin', async (c) => {
     if (!success) {
         c.status(411);
         return c.json({
-            message: "Inputs not correct"
+            message: "Invalid email or password"
         })
     }
 
@@ -68,13 +79,13 @@ userRoute.post('/signin', async (c) => {
           })
       if(!user) {
         c.status(403);
-            return c.json({ error: "Invalid Credentials" })
+            return c.json({ error: "Invalid email and password combination" })
       }
       const jwt = await sign({ id: user.id }, c.env.JWT_SECRET)
       const name = user.name
         return c.json({ jwt, name });
       } catch(e) {
-          c.status(403)
-      return c.json({ error: "error while signing in" })
+          c.status(500)
+      return c.json({ error: "Internal Server Error" })
       }
   })
