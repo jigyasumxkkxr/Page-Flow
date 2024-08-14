@@ -25,7 +25,7 @@ export const NavBar = () => {
             </div>
             </Link>
 
-            <div className="h-full flex mx-3 sm:mx-8 gap-6 items-center">
+            <div className="h-full flex mx-3 sm:mx-8 gap-3 sm:gap-6 items-center">
                 <div>
                     <ButtonDark label="Get Started" onClick={SignUpHandeler} />
                 </div>

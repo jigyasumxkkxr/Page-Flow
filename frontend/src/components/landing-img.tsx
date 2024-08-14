@@ -4,7 +4,7 @@ import hero3 from "../assets/Croods The Feedback.svg"
 
 export const LandingImage = () => {
     return (
-        <div className="flex h-64 justify-center sm:justify-between mx-3 sm:mx-48">
+        <div className="flex h-64 justify-center  sm:justify-between mx-3 sm:mx-48">
                 <div className="hidden sm:block ">
                     <img src={hero1} alt="" className="h-full" />
                 </div>
