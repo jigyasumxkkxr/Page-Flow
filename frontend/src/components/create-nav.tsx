@@ -17,7 +17,7 @@ export const NavPost = () => {
             </div>
             </Link>
 
-            <div className="h-full flex mx-8 items-center">
+            <div className="h-full flex mx-2.5 sm:mx-8 items-center">
                 <MyDropdown />
             </div>     
         </div>
