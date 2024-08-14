@@ -6,13 +6,13 @@ export const NavPost = () => {
     return (
         <div className="h-14 flex justify-between mt-2">
             <Link to={"/blogs"} >
-            <div className="h-full flex mx-8 items-center gap-3">
-                <div className="h-full">
+            <div className="h-full flex mx-2 sm:mx-8 items-center gap-3">
+                <div className="w-1/3 sm:w-2/5 h-full">
                     <img src={logo} alt="" className="h-full" />
                 </div>
 
                 <div>
-                    <h3 className="text-3xl font-extrabold text-slate-950">PageFlow</h3>
+                    <h3 className="text-xl sm:text-3xl font-bold sm:font-extrabold text-slate-950">PageFlow</h3>
                 </div>
             </div>
             </Link>

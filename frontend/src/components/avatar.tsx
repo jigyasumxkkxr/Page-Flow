@@ -39,7 +39,7 @@ export const MyDropdown = () => {
               </svg>
             </div>
       </DropdownTrigger>
-      <DropdownMenu aria-label="Static Actions" className='backdrop-blur-xs border-2 rounded'>
+      <DropdownMenu aria-label="Static Actions" className='backdrop-blur-sm border-2 rounded'>
         <DropdownItem key="new" className=' cursor-default border-b h-9 hover:bg-green-100 text-green-600'>{`Signed as ${localStorage.getItem("firstName")}`}</DropdownItem>
         <DropdownItem key="copy" onClick={handleRefreshClick} className='cursor-pointer h-8 text-gray-700 hover:bg-gray-100'>Refresh Blogs</DropdownItem>
         <DropdownItem key="copy" onClick={handleMyPostsClick} className='cursor-pointer h-8 text-gray-700 hover:bg-gray-100'>My Posts</DropdownItem>
