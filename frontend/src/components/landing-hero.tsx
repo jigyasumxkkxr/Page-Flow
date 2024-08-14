@@ -2,7 +2,7 @@
 
 export const HeroLanding = () => {
     return (
-        <div className="flex flex-col mt-28 justify-center items-center gap-3 w-1/2">
+        <div className="flex flex-col mt-16 text-center sm:mt-28 justify-center items-center gap-3 w-1/2">
             <div className="bg-slate-100 px-3 py-0.5 rounded-md shadow-md shadow-slate-200">
                 Welcome to PageFlow
             </div>
