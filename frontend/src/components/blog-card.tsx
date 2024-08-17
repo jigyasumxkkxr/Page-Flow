@@ -53,7 +53,7 @@ export const BlogCard = ({
                     <p className="font-md text-xs text-slate-600 pt-0.5">{createdAtIndiaTime.toLocaleString()}</p>
                 </div>
                 <div>
-                    <p className="font-bold text-xl sm:text-3xl">{title}</p>
+                    <p className="font-bold text-xl sm:text-3xl">{title.length > 100 ? title.slice(0,100) + "..." : title}</p>
                 </div>
                 <div>
                     <p className="text-slate-500 text-xs sm:text-md">{description.length > 200 ? description.slice(0, 200) + "..." : description}</p>
