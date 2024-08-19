@@ -1,4 +1,5 @@
 import moment from "moment-timezone"
+import ReactMarkdown from 'react-markdown';
 
 interface BlogProps {
     id: string,
@@ -25,7 +26,7 @@ export const BlogCardFull = ({
                         </div>
                         <p className="font-md text-xs text-slate-600 pt-1 sm:pt-3">{createdAtIndiaTime.toLocaleString()}</p>
                             <div className="pt-4 text-sm sm:text-lg">
-                            {description}
+                            <ReactMarkdown>{description}</ReactMarkdown>
                             </div>
                         </div>
                     <div className="w-1/4">

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import bagdee from "../assets/Badge.svg"
 import moment from "moment-timezone"
 import { useEffect, useState } from "react"
+import ReactMarkdown from 'react-markdown';
 
 interface BlogProps {
     id: string,
@@ -55,7 +56,7 @@ export const BlogCardEdit = ({
                     <p className="font-bold text-xl sm:text-3xl">{title}</p>
                 </div>
                 <div>
-                    <p className="text-slate-500 text-xs sm:text-md">{description.length > 200 ? description.slice(0, 200) + "..." : description}</p>
+                <ReactMarkdown className="text-slate-500 text-xs sm:text-md">{description.length > 200 ? description.slice(0, 200) + "..." : description}</ReactMarkdown>
                 </div>
                 <div className="text-xs sm:text-sm opacity-80 w-full rounded flex gap-3 justify-between items-center">
                     <span className="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 h-3/4 rounded me-2 shadow-md shadow-gray-200 gap-1">

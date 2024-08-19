@@ -7,6 +7,7 @@ import { Blogs } from "./pages/Blogs"
 import { Publish } from "./pages/Publish"
 import { MyBlog } from "./pages/MyBlogs"
 import { EditPost } from "./pages/Edit"
+import { Ai } from "./pages/ai"
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="blog/edit/:id" element = {<EditPost />} />
           <Route path="/blogs" element = {<Blogs />} />
           <Route path="/create" element = {<Publish />} />
+          <Route path="/create/ai" element = {<Ai />} />
           <Route path="/myblogs" element = {<MyBlog />} />
         </Routes>
       </BrowserRouter>
