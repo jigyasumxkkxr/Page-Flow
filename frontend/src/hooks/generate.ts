@@ -14,8 +14,6 @@ export const useGenerate = (question: string) => {
                 contents: [{ parts: [{ text: `${question}` }] }]
             });
 
-            console.log("API Response:", response.data); // Log the API response
-
             const text = response.data.candidates[0].content.parts[0].text;
             const newTitle = text.split('\n')[0].replace('## ', '');
             const newDescription = text.split('\n').slice(1).join('\n');
