@@ -11,7 +11,7 @@ import { useGenerate } from "../hooks/generate"
 export const CreatePostAi = () => {
     const [question, setQuestion] = useState("")
     const navigate = useNavigate()
-    const { loading, title, description, generateContent } = useGenerate(question);
+    const { title, description, generateContent } = useGenerate(question);
 
     const handlePostAi = async () => {
         try {
