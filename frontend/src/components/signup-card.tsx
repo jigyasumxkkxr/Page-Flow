@@ -1,6 +1,6 @@
 import { SignupType } from "@jigyasumakkxr/medium-common"
 import axios, { AxiosError } from "axios"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { BACKEND_URL } from "../config"
 import toast from 'react-hot-toast';
@@ -13,6 +13,14 @@ export const SignupCard = () => {
         name:""
     })
     const navigate = useNavigate()
+    const passwordRef = useRef<HTMLInputElement>(null);
+    const signInButtonRef = useRef<HTMLButtonElement>(null);
+
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+        signInButtonRef.current?.click();
+        }
+    };
 
     const signup  = async () => {
         try {
@@ -74,17 +82,19 @@ export const SignupCard = () => {
                 <p className="text-md font-semibold text-slate-800 flex items-center">Password <span className="text-xs font-normal text-slate-400">(Min. 6 Characters)</span></p>
                 <input type="password" className="w-full h-8 px-2 rounded-md border" onChange={(e) => {
                     setPostInputs({...postInputs,password:e.target.value})
-                }} />
+                }}  ref={passwordRef}
+                    onKeyDown={handleKeyDown} />
                 </div>
                 <div>
                 <p className="text-md font-semibold text-slate-800 flex items-center">Name <span className="text-xs font-normal text-slate-400">(Optional)</span></p>
                 <input type="text" placeholder="John Doe" className="w-full text-sm h-8 px-2 rounded-md border" onChange={(e) => {
                     setPostInputs({...postInputs,name:e.target.value})
-                }} />
+                }}  ref={passwordRef}
+                    onKeyDown={handleKeyDown} />
                 </div>
             </div>
             <div className="px-6 h-10">
-               <button className="h-full px-6 bg-slate-950 rounded-md  text-lg text-slate-50 font-semibold hover:bg-slate-800 shadow-md shadow-slate-950/40 w-full" onClick={buttonHandeler}>Sign Up</button>
+               <button className="h-full px-6 bg-slate-950 rounded-md  text-lg text-slate-50 font-semibold hover:bg-slate-800 shadow-md shadow-slate-950/40 w-full" onClick={buttonHandeler} ref={signInButtonRef}>Sign Up</button>
             </div>
             <div className="mt-2 px-6 text-center">
                 <p>Already have an account ? <Link to={"/signin"} className="hover:underline">Signin</Link></p>

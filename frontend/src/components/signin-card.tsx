@@ -1,6 +1,6 @@
 import { SigninType } from "@jigyasumakkxr/medium-common"
 import axios, { AxiosError } from "axios"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { BACKEND_URL } from "../config"
 import toast from "react-hot-toast"
@@ -15,6 +15,14 @@ export const SigninCard = () => {
     })
 
     const navigate = useNavigate()
+    const passwordRef = useRef<HTMLInputElement>(null);
+    const signInButtonRef = useRef<HTMLButtonElement>(null);
+
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+        signInButtonRef.current?.click();
+        }
+    };
 
     const signup = async () => {
         try {
@@ -60,11 +68,12 @@ export const SigninCard = () => {
                 <p className="text-md font-semibold text-slate-800">Password</p>
                 <input type="password" className="w-full h-8 px-2 rounded-md border" onChange={(e) => {
                     setPostInputs({...postInputs,password:e.target.value})
-                }} />
+                }} ref={passwordRef}
+                   onKeyDown={handleKeyDown} />
                 </div>
             </div>
             <div className="px-6 h-10">
-               <button className="h-full px-6 bg-slate-950 rounded-md text-lg text-slate-50 font-semibold hover:bg-slate-800 shadow-md shadow-slate-950/40 w-full" onClick={buttonHandeler}>{"Sign In"}</button>
+               <button className="h-full px-6 bg-slate-950 rounded-md text-lg text-slate-50 font-semibold hover:bg-slate-800 shadow-md shadow-slate-950/40 w-full" onClick={buttonHandeler} ref={signInButtonRef}>{"Sign In"}</button>
             </div>
             <div className="mt-2 px-6 text-center">
                 <p>Don't have an account ? <Link to={"/signup"} className="hover:underline">Signup</Link></p>
