@@ -4,39 +4,40 @@ import axios from "axios"
 import { BACKEND_URL } from "../config"
 import toast from "react-hot-toast"
 import { NavPostAi } from "./create-nav-ai"
-import { useGenerate } from "../hooks/generate"
 
 
 
 export const CreatePostAi = () => {
     const [question, setQuestion] = useState("")
     const navigate = useNavigate()
-    const { title, description, generateContent } = useGenerate(question);
+
 
     const handlePostAi = async () => {
         try {
-            await generateContent();
+            const url = import.meta.env.VITE_API || "";
+            const answer = await axios.post(url, {
+                contents: [{ parts: [{ text: question }] }]
+            });
 
-            // Check if title and description are updated
-            if (title !== "Untitled" && description !== "Sample Description") {
-                const response = await axios.post(`${BACKEND_URL}/api/v1/blog`, {
-                    title,
-                    content: description
-                }, {
-                    headers: {
-                        Authorization: localStorage.getItem("token")
-                    }
-                });
+        const text = answer.data.candidates[0].content.parts[0].text;
+        const generatedTitle = text.split('\n')[0].replace('## ', '');
+        const generatedDescription = text.split('\n').slice(1).join('\n');
 
-                navigate(`/blog/${response.data.id}`);
-            } else {
-                throw new Error('Failed to generate content');
-            }
+            const response = await axios.post(`${BACKEND_URL}/api/v1/blog`, {
+                title: generatedTitle,
+                content: generatedDescription
+            }, {
+                headers: {
+                    Authorization: localStorage.getItem("token")
+                }
+            });
+            navigate(`/blog/${response.data.id}`);
         } catch (error) {
             console.error("Failed to post:", error);
-            throw error;
+            toast.error("Failed to generate content");
         }
     };
+
     return (
         <div className="absolute inset-0 min-h-screen max-h-fit max-w-screen bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
             <NavPostAi />
@@ -53,7 +54,7 @@ export const CreatePostAi = () => {
                 toast.promise(
                     handlePostAi(),
                     {
-                        loading: 'Posting...',
+                        loading: 'Generating and Posting...',
                         success: 'Successfully Posted!',
                         error: 'Failed to generate. Please try again.'
                     }
