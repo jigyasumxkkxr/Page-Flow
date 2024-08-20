@@ -113,6 +113,29 @@ blogRoute.put("/", async (c) => {
     }
 })
 
+blogRoute.delete("/:id", async (c) => {
+    const id = c.req.param("id")
+    const userId = c.get('userId')
+    const connectionString = c.env.DATABASE_URL
+    const pool = new Pool({connectionString})
+    const adapter = new PrismaNeon(pool)
+    const prisma = new PrismaClient({adapter})
+    try {
+        await prisma.post.delete({
+            where: {
+                id,
+                authorId: userId
+            }
+        })
+        return c.text('deleted post')
+    }catch(err){
+        c.status(500)
+        return c.json({
+            error : "Server Error"
+        })
+    }
+})
+
 blogRoute.get("/bulk", async (c) => {
     const connectionString = c.env.DATABASE_URL
     const pool = new Pool({connectionString})

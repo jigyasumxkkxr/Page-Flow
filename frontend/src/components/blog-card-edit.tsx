@@ -3,6 +3,9 @@ import bagdee from "../assets/Badge.svg"
 import moment from "moment-timezone"
 import { useEffect, useState } from "react"
 import ReactMarkdown from 'react-markdown';
+import axios from "axios";
+import { BACKEND_URL } from "../config";
+import toast from "react-hot-toast";
 
 interface BlogProps {
     id: string,
@@ -28,6 +31,19 @@ export const BlogCardEdit = ({
         }
     }, [author])
     const createdAtIndiaTime = moment(createdAt).tz('Asia/Kolkata').format('MMMM D, YYYY [at] hh:mm A')
+    const deleteHandler = async () => {
+        try { 
+            await axios.delete(`${BACKEND_URL}/api/v1/blog/${id}`, {
+                    headers: {
+                        Authorization: localStorage.getItem("token")
+                    }
+                }
+            )
+            window.location.href = "/myblogs";
+        }catch(err){
+            console.error(err)
+        }
+    }
     return (
         <Link to = {`/blog/${id}`} >
             <div className="flex flex-col gap-2 sm:gap-3 w-full pb-4 border-b items-start justify-start">
@@ -65,11 +81,27 @@ export const BlogCardEdit = ({
                         </svg>
                         {`${Math.ceil(description.length / 400)} minute(s) read`}
                     </span>
-                    <Link to={`/blog/edit/${id}`} >
-                        <button className="bg-gray-300 text-gray-900 rounded-md text-sm font-semibold px-5 py-1 shadow-md hover:bg-gray-200">
-                            Edit
-                        </button>
-                    </Link>
+                    <div className="flex gap-3">
+                        <Link to={`/blog/edit/${id}`} >
+                            <button className="bg-gray-300 text-gray-900 rounded-md text-sm font-semibold px-5 py-1 shadow-md hover:bg-gray-200">
+                                Edit
+                            </button>
+                        </Link>
+                        <Link to={""}>
+                            <button className="bg-red-300 text-red-900 rounded-md text-sm font-semibold px-5 py-1 shadow-md hover:bg-red-200" onClick={() => {
+                                toast.promise(
+                                    deleteHandler(),
+                                    {
+                                        loading: 'Deleting and refreshing...',
+                                        success: 'Successfully Deleted!',
+                                        error: 'Failed to delete. Please try again.'
+                                    }
+                                );
+                            }}>
+                                Delete
+                            </button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </Link>
