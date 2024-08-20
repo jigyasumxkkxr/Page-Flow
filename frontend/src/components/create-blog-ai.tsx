@@ -4,6 +4,7 @@ import axios from "axios"
 import { BACKEND_URL } from "../config"
 import toast from "react-hot-toast"
 import { NavPostAi } from "./create-nav-ai"
+import geminiLogo from "../assets/image 3.svg"
 
 
 
@@ -49,7 +50,10 @@ export const CreatePostAi = () => {
                     setQuestion(e.target.value)
                 }} type="text" className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Write a prompt for your blog post" />
                 </div>
-                <div className="flex justify-end">
+                <div className="flex justify-between">
+                <div className="flex items-center text-xs sm:text-sm gap-1">
+                    <span className="pt-0.5">Powered by</span><span><img src={geminiLogo} alt="" className="h-3 sm:h-4" /></span>
+                </div>
                 <button onClick={() => {
                 toast.promise(
                     handlePostAi(),
