@@ -52,6 +52,9 @@ At PageFlow, we’re redefining the blogging experience with a modern, streamlin
 ### Edit Post Page
 ![image](https://github.com/user-attachments/assets/343a2fe4-5ffa-4042-888d-ad9f329a0f8b)
 
+### Generate with Ai Page
+![ef6ff5a3ad2d9fc18142e20fc98d033c.png](https://imgtr.ee/images/2024/08/20/ef6ff5a3ad2d9fc18142e20fc98d033c.png)
+
 
 
 
