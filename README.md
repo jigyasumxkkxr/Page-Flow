@@ -81,9 +81,3 @@ To run this project, you will need to add the following environment variables to
 
 
 
-## Related
-
-Here are my MERN project
-
-[Payments-Master](https://payments-master.vercel.app/)
-
